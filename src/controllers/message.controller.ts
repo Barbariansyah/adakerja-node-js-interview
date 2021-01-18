@@ -11,6 +11,11 @@ const CreateMessage = async ({ email, message }: CreateQuery<IMessage>): Promise
         });
 };
 
+const GetMessages = async (): Promise<IMessage[]> => {
+    return Message.find({});
+};
+
 export default {
     CreateMessage,
+    GetMessages,
 };

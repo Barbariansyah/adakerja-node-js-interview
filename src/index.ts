@@ -16,7 +16,7 @@ app.use(json());
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/message', routes.message);
+app.use('/messages', routes.message);
 
 mongoose.connect(
     `${process.env.DATABASE_URL}`,

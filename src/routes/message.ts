@@ -3,8 +3,9 @@ import MessageController from '../controllers/message.controller';
 
 const router = Router();
 
-router.get('/', (req: Request, res: Response) => {
-    return res.send('message routes');
+router.get('/', async (req: Request, res: Response) => {
+    const messages = await MessageController.GetMessages();
+    return res.send({ messages });
 });
 
 router.post('/', async (req: Request, res: Response) => {
