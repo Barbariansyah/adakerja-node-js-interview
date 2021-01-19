@@ -36,7 +36,7 @@ $ nodemon
 ### Tests
 to run test you can use
 ```
-npm run test
+$ npm run test
 ```
 
 ### Result
@@ -56,3 +56,6 @@ npm run test
 
 5. Delete message by id
 ![delete by id](/documentation/deleteById.png?raw=true)
+
+6. Test result
+![tests](/documentation/tests.png?raw=true)
