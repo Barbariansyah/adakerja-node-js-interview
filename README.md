@@ -1,5 +1,9 @@
 # adakerja-node-js-interview
-AdaKerja node.js interview task
+AdaKerja node.js interview task. Built on:
+1. Node
+2. Express
+3. TypeScript
+4. Mongoose
 
 ### Local setup
 1. Clone repo
@@ -29,9 +33,15 @@ $ nodemon
 - Please follow this tutorial: https://developers.facebook.com/docs/messenger-platform/getting-started/quick-start
 - For development, I personally use ngrok to expose my webhook
 
+### Tests
+to run test you can use
+```
+npm run test
+```
+
 ### Result
 1. Answering yes to the last question
-![example-0](/documentation/example-0.gif?raw=true)
+![example-0](/documentation/example-0.gif?raw=true | width=100)
 ![example-0-png](/documentation/example-0.png?raw=true)
 
 2. Replying with unrecognized date format and answering no to the last question
