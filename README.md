@@ -34,7 +34,7 @@ $ nodemon
 ![example-0](/documentation/example-0.gif?raw=true)
 ![example-0-png](/documentation/example-0.png?raw=true)
 
-2. Replying with unrecognized date format and answering yes to the last question
+2. Replying with unrecognized date format and answering no to the last question
 ![example-1](/documentation/example-1.gif?raw=true)
 ![example-1-png](/documentation/example-1.png?raw=true)
 
