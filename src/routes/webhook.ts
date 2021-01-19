@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import MessageController from '../controllers/message.controller';
+import WebhookController from '../controllers/webhook.controller';
 
 const router = Router();
 
@@ -9,7 +9,7 @@ router.post('/', async (req: Request, res: Response) => {
     if (body.object === 'page') {
         const webhook_event = body.entry[0].messaging[0];
         console.log(webhook_event);
-        const message = await MessageController.CreateMessage({
+        await WebhookController.HandleMessage({
             sender_id: webhook_event.sender.id,
             timestamp: webhook_event.timestamp,
             mid: webhook_event.message.mid,
