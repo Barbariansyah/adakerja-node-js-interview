@@ -8,12 +8,14 @@ router.get('/', async (req: Request, res: Response) => {
     return res.status(200).send({ messages });
 });
 
-router.post('/', async (req: Request, res: Response) => {
-    const message = await MessageController.CreateMessage({
-        email: req.body.email,
-        message: req.body.message,
-    });
-    return res.status(200).send({ message });
+router.get('/:id', async (req: Request, res: Response) => {
+    const messages = await MessageController.GetMessageById(req.params.id);
+    return res.status(200).send({ messages });
+});
+
+router.delete('/:id', async (req: Request, res: Response) => {
+    const messages = await MessageController.DeleteMessageById(req.params.id);
+    return res.status(200).send({ messages });
 });
 
 export default router;
