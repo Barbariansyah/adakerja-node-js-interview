@@ -1,4 +1,5 @@
 import request from 'request';
+import dayjs from 'dayjs';
 
 import MessageController from '../controllers/message.controller';
 import UserController from '../controllers/user.controller';
@@ -23,10 +24,20 @@ const HandleMessage = ({ sender_id, timestamp, mid, text }: IMessage): Promise<s
                 sendMessage(sender_id, 'When is your birth date? (please reply with this format: YYYY-MM-DD)');
             } else {
                 if (!user.birth_date) {
-                    UserController.UpdateUserById(sender_id, { birth_date: text });
-                    sendMessage(sender_id, 'Do you want to know how many days until your next birhtday?');
+                    if (dayjs(text, 'YYYY-MM-DD').isValid()) {
+                        UserController.UpdateUserById(sender_id, { birth_date: text });
+                        sendMessage(sender_id, 'Do you want to know how many days until your next birhtday?');
+                    } else {
+                        sendMessage(
+                            sender_id,
+                            'Please reply with this exact format for your birth date: YYYY-MM-DD (e.g. 1971-06-22)',
+                        );
+                    }
                 } else {
                     if (['yes', 'yeah', 'y', 'yup', 'yes please'].includes(text.toLowerCase())) {
+                        const nextBirthday = dayjs(user.birth_date).year(dayjs().year());
+                        const daysToGo = nextBirthday.diff(dayjs(), 'days');
+                        sendMessage(sender_id, `${daysToGo} days to go`);
                     } else if (['no', 'nah', 'n', 'nope'].includes(text.toLowerCase())) {
                         sendMessage(sender_id, 'Goodbye 👋');
                     } else {
