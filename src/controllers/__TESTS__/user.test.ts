@@ -87,7 +87,9 @@ test('update user by id', async () => {
         sender_id: '23131312',
     });
 
-    const user = await UserController.UpdateUserById(23131312, { first_name: 'barry', birth_date: '2000-07-21' });
+    await UserController.UpdateUserById(23131312, { first_name: 'barry', birth_date: '2000-07-21' });
+
+    const user = await UserController.GetUserById(23131312);
 
     expect(user).toMatchObject({
         sender_id: 23131312,
